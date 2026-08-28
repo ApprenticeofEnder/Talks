@@ -19,6 +19,8 @@
 
 #title-slide()
 
+#outline-slide(level: 1)
+
 // Outline
 // 1. WTF Happened
 // 2. How this worked
