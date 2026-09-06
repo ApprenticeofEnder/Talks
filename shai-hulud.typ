@@ -27,8 +27,12 @@
 
 == AI Disclosure
 
-This presentation is AIL-0 -- no LLMs were used in the creation of its content.
-// Find the link on AIL
+#slide[
+  This presentation is *AIL-0* -- no LLMs were used in the creation of its content.
+][
+
+  #image("./assets/ail-0.png")
+]
 
 = Part 1: What Happened?
 
