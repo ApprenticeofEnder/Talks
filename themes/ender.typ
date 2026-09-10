@@ -403,3 +403,29 @@
 
   body
 }
+
+// ================
+// CUSTOM FUNCTIONS
+// ================
+
+#let card(
+  fill: rgb("#010e01"),
+  stroke: rgb("#404040"),
+  alpha: 100%,
+  body,
+) = [
+  #set text(fill: rgb("#e5faea").transparentize(100%).opacify(alpha))
+  #show strong: it => text(
+    rgb("#00ff00").transparentize(100%).opacify(alpha),
+    it.body,
+  )
+  #block(
+    inset: .7em,
+    radius: .2em,
+    fill: fill.transparentize(100%).opacify(alpha),
+    stroke: stroke.transparentize(100%).opacify(alpha),
+    [
+      #body
+    ],
+  )
+]

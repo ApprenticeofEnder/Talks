@@ -37,12 +37,23 @@
 = Part 1: Why Is This A Problem?
 
 == Agents Ignoring Instructions
-#image("./assets/cursor-ignore-1.png")
+#align(center)[
+  #image("./assets/cursor-ignore-1.png")
+]
+
+//CITE
+
+== Palate Cleanser
+
+// Add an image of puppies or something
 
 == Agents Bypassing Sudo
 
-#image("./assets/codex-sudo-bypass.png")
+#align(center)[
+  #image("./assets/codex-sudo-bypass.png")
+]
 
+//CITE
 
 == Prompt Injection
 
@@ -74,6 +85,8 @@ It's an ID assigned to a collection of characters that has semantic meaning to a
 - Token to word exchange varies by tokenizer
 - Usually 1.5 tokens per word
 
+//CITE
+
 == WTF Is a Token?
 
 Example: Look at the usage of the letter "A" here.
@@ -82,15 +95,102 @@ Example: Look at the usage of the letter "A" here.
 2. Jeff is #([*a*], [moral]).join()
 3. Jeff loves his #([c], [*a*], [t]).join()
 
+//CITE
+
 == Context Windows
+
+- Essentially an LLM's "attention span"
+- Specifically, max number of tokens for which model can compute vector weights
+- *Note*: Compute requirements are $O(n^2)$ on the number of tokens
+
+// CITE
+
+== The "Attention Span"
+
+- Like people, LLMs can get overwhelmed and take shortcuts
+- More context -> worse information usage
+- Information in the middle usually gets lost
+- At around 50%, the model starts to get . . . forgetful
+
+//CITE
+
+== Long Story Short
+
+#align(center)[
+  #image("./assets/claude-context-meme.jpg")
+]
 
 = Part 3: Guardrails
 
+== Two Types of Guardrail
+
+#let stochastic_guardrail = [
+  #align(center)[*Stochastic*]
+
+  #lazy-v(1fr)
+  - Inputs to an LLM
+  - Inherently random
+  - Not programmatically enforced
+  - Think:
+    - System Prompts
+    - AGENTS.md
+    - Skills
+  #lazy-v(1fr)
+]
+
+#let deterministic_guardrail = [
+  #align(center)[*Deterministic*]
+
+  #lazy-v(1fr)
+  - The check itself is done by software, not an LLM
+  - Consistent
+  - Need to handle edge cases
+  - Think:
+    - External CLIs
+    - Agent Harnesses
+    - Hooks
+    - Permissions
+  #lazy-v(1fr)
+]
+
+
+#cols(lazy-layout: true)[
+  #card(alpha: 20%, stochastic_guardrail)
+][
+  #card(alpha: 20%, deterministic_guardrail)
+]
+
+== Two Types of Guardrail: Stochastic
+
+#cols(lazy-layout: true)[
+  #card(stochastic_guardrail)
+][
+  #card(alpha: 20%, deterministic_guardrail)
+]
+
+== Two Types of Guardrail: Deterministic
+
+#cols(lazy-layout: true)[
+  #card(alpha: 20%, stochastic_guardrail)
+][
+  #card(deterministic_guardrail)
+]
+
+#focus-slide([
+  *Rule of Thumb*:
+
+  If you don't want your agent to potentially hallucinate or forget it, make a deterministic check.
+])
+
 = Part 4: Permissions
+
+// Claude Code vs OpenCode permission model
+// Patterns to look for
 
 = Part 5: Hooks and Plugins
 
 // Claude/Codex Hooks, OpenCode Plugins
+// Parsing Bash commands
 
 = Part 6: Alternative Methods
 
