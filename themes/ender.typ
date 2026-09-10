@@ -412,6 +412,7 @@
   fill: rgb("#010e01"),
   stroke: rgb("#404040"),
   alpha: 100%,
+  title: none,
   body,
 ) = [
   #set text(fill: rgb("#e5faea").transparentize(100%).opacify(alpha))
@@ -425,7 +426,15 @@
     fill: fill.transparentize(100%).opacify(alpha),
     stroke: stroke.transparentize(100%).opacify(alpha),
     [
-      #body
+      #if title != none {
+        align(center)[#strong(title)]
+
+        lazy-v(1fr)
+        body
+        lazy-v(1fr)
+      } else {
+        body
+      }
     ],
   )
 ]

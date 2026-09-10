@@ -1,4 +1,5 @@
 #import "@preview/touying:0.7.4": *
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 #import "themes/ender.typ": *
 
 #show: ender-theme.with(
@@ -184,8 +185,48 @@ Example: Look at the usage of the letter "A" here.
 
 = Part 4: Permissions
 
-// Claude Code vs OpenCode permission model
-// Patterns to look for
+== How Do Permissions Work?
+
+#item-by-item(start: <list>)[
+  - Depends on the harness (Claude Code, Codex, Cursor, OpenCode, etc.)
+  - Generally an allow/denylist of tool calls the agent can make
+    - Can also specify specific inputs like filenames
+  - Can be scoped globally or to specific agents
+]
+
+== Deny by Default?
+
+#item-by-item(start: <list>)[
+  - Historically, the principle of "Deny By Default" was king
+  - With agents, that gets skewed
+    - If a tool call gets denied, how do you know what blocked it?
+]
+
+== Ask by Default?
+
+#item-by-item(start: <list>)[
+  - Most agents ask for tool calls by default
+  - Decision fatigue
+    - Autopiloting, anyone?
+]
+
+== A Good Approach
+
+- Write out what you need the agent to do
+- Make a permissions policy
+  - Low-risk, frequent actions set to "Allow"
+  - Risky and/or infrequent actions set to "Ask"
+  - High-risk and/or out-of-scope actions set to "Deny"
+- Modify as you go
+
+// CITE
+
+== Considerations
+
+- Subversion
+  - If write access is blocked, agents use `sed` or bash redirections
+- Project-level permissions
+  - Can set access at the project or directory level
 
 = Part 5: Hooks and Plugins
 
