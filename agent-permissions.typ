@@ -230,10 +230,46 @@ Example: Look at the usage of the letter "A" here.
 
 = Part 5: Hooks and Plugins
 
-// Claude/Codex Hooks, OpenCode Plugins
-// Parsing Bash commands
+== Hooks and Plugins
 
-= Part 6: Alternative Methods
+- Hooks refer to Claude/Codex/Cursor Hooks
+- Plugins refer to OpenCode plugins
+- Both listen for events to trigger specific commands/functions/effects
 
-// Dockerizing
-// Sandboxes
+== Why Hooks?
+
+- Relying on agents to follow system prompt/rules/skills is unreliable
+- Hooks make deterministic checks that can influence behaviour
+  - Automatically performing operations on files
+  - Blocking tools, commands or keywords beyond permissions
+  - Re-asserting critical stochastic guardrails
+
+== Why Hooks?
+
+#align(center)[
+  #image("./assets/superman-darkseid-pulling-superman's-cape-1494736588.gif")
+]
+
+== Hook Example: Skill Router
+
+- `UserSubmitPrompt` hook
+- Presents a list of skills grouped by priority to load in
+- Python script matches based on keywords or regex patterns
+- Deterministic guardrail that enforces the use of stochastic guardrails
+
+== Hook Example: Command Blocker
+
+- `PreToolUse` hook matching Bash or Shell commands
+- Use shell parser like `bashlex` for Python
+- Use a command allowlist with least privilege and deny by default
+
+== Bashlex Example
+
+```python
+>>> list(bashlex.split('cat <(echo "a $(echo b)") | tee'))
+['cat', '<(echo "a $(echo b)")', '|', 'tee']
+```
+
+= Part 6: Docker Sandboxes
+
+// TODO: https://www.docker.com/blog/docker-sandboxes-run-claude-code-and-other-coding-agents-unsupervised-but-safely/
