@@ -35,6 +35,11 @@
   #image("./assets/ail-0.png")
 ]
 
+== Before We Get Going...
+
+- This presentation is designed to be relatively product-agnostic
+- If you have questions about a specific harness, model, or other product, check provider docs
+
 = Part 1: Why Is This A Problem?
 
 == Agents Ignoring Instructions
@@ -46,7 +51,9 @@
 
 == Palate Cleanser
 
-// Add an image of puppies or something
+#align(center)[
+  #image("./assets/cooper.jpg")
+]
 
 == Agents Bypassing Sudo
 
@@ -225,7 +232,7 @@ Example: Look at the usage of the letter "A" here.
 
 - Subversion
   - If write access is blocked, agents use `sed` or bash redirections
-- Project-level permissions
+- Project-level settings
   - Can set access at the project or directory level
 
 = Part 5: Hooks and Plugins
@@ -270,6 +277,78 @@ Example: Look at the usage of the letter "A" here.
 ['cat', '<(echo "a $(echo b)")', '|', 'tee']
 ```
 
-= Part 6: Docker Sandboxes
+= Part 6: Sandboxing
 
-// TODO: https://www.docker.com/blog/docker-sandboxes-run-claude-code-and-other-coding-agents-unsupervised-but-safely/
+== What's a Sandbox?
+
+- In our case, a way of isolating an agent to run without needing explicit user approval
+- Crucially, this needs to be done without risking potentially harmful behaviour
+
+#focus-slide[
+  YOLO!
+
+  ```bash
+  --dangerously-skip-permissions
+  ```
+]
+
+== Methods
+
+- Often agent dependent
+- Sandboxed shell tools
+- Sandbox runtime
+- Dev containers
+- Custom containers
+- Virtual machines (Docker Sandbox)
+
+== Sandboxing Guidelines
+
+- Review what you can write to
+- Check what credentials and tokens are reachable
+- Check the network egress policy
+- Defense in depth rarely hurts
+
+== Sandboxed Shell Tools (Claude Code)
+
+Running Bash commands with restricted network/file access at the OS level
+
+```json
+{
+  "sandbox": {
+    "enabled": true,
+    "filesystem": {
+      "allowWrite": ["~/.kube", "/tmp/build"]
+    }
+    "network": {
+      "allowedDomains": ["github.com", "*.npmjs.org"]
+    }
+  }
+}
+```
+
+== Sandboxed Runtime
+
+- Claude Code has `@anthropic-ai/sandbox-runtime`
+- Codex has a dedicated sandbox mode in the CLI
+- Other agents? Check the docs
+
+== DevContainers
+
+- Essentially Docker containers compatible with VSCode or other editors
+  - Install plugins
+  - Configure network rules, system permissions
+- Claude Code has an example DevContainer in their repository
+
+== Custom Containers
+
+- Similar to DevContainers, allow you to configure network and other access rules
+- Usually more customization work
+- If you have existing containers or CI runners, this is a good path
+
+== Virtual Machine
+
+- Separation at the kernel or (virtualized) hardware level
+- Options:
+  - Cloud instances
+  - Local hypervisors (VirtualBox, VMWare, KVM)
+  - MicroVM (Firecracker, Docker Sandboxes)
