@@ -71,7 +71,13 @@
   - Malicious prompts that subvert previous instructions
   - "Ignore all previous instructions and ..."
 ][
-  #image("./assets/prompt-injection.png")
+  #figure(
+    image("./assets/prompt-injection.png"),
+    caption: [
+      A diagram showing an example of prompt injection.
+      @prompt-injection
+    ],
+  )
 ]
 
 == In Summary...
@@ -288,6 +294,13 @@ Examples taken from IBM's explainer page @ibm-context-window.
   ```
 ]
 
+== Sandboxing Guidelines
+
+- Review what you can read from and write to
+- Check what credentials and tokens are reachable
+- Check the network egress policy
+- Defense in depth rarely hurts
+
 == Methods
 
 - Often agent dependent
@@ -296,13 +309,6 @@ Examples taken from IBM's explainer page @ibm-context-window.
 - Dev containers
 - Custom containers
 - Virtual machines (Docker Sandbox)
-
-== Sandboxing Guidelines
-
-- Review what you can write to
-- Check what credentials and tokens are reachable
-- Check the network egress policy
-- Defense in depth rarely hurts
 
 == Sandboxed Shell Tools (Claude Code)
 

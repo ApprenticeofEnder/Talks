@@ -1,17 +1,23 @@
 ibm-context-window:
-  type: Website
+  type: Blog
   title: What is a context window?
   author: Bergmann, David
   url: https://www.ibm.com/think/topics/context-window
 
 cursor-db-crash:
-  type: Website
+  type: Post
   title: An AI Agent Just Destroyed Our Production Data. It Confessed in Writing.
   author: JER
   url: https://x.com/lifeofjer/article/2048103471019434248
 
 codex-sudo-bypass:
-  type: Website
+  type: Post
   title: Codex just found a "Workaround" of not having sudo on my pc...
   author: Luong, Son
   url: https://x.com/sluongng/status/2060746160558543217
+
+prompt-injection:
+  type: Blog
+  title: "AI Under Attack: Six Key Adversarial Attacks and Their Consequences"
+  author: Birch, Lewis
+  url: https://mindgard.ai/blog/ai-under-attack-six-key-adversarial-attacks-and-their-consequences#prompt-injection
