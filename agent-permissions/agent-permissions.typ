@@ -1,6 +1,6 @@
 #import "@preview/touying:0.7.4": *
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
-#import "themes/ender.typ": *
+#import "../themes/ender.typ": *
 
 #show: ender-theme.with(
   aspect-ratio: "16-9",
@@ -32,7 +32,7 @@
   This presentation is *AIL-0* -- no LLMs were used in the creation of its content.
 ][
 
-  #image("./assets/ail-0.png")
+  #image("../assets/ail-0.png")
 ]
 
 == Before We Get Going...
@@ -45,7 +45,7 @@
 == Agents Ignoring Instructions
 #align(center)[
   #figure(
-    image("./assets/cursor-ignore-1.png"),
+    image("../assets/cursor-ignore-1.png"),
     caption: [Quote from Cursor explaining how it bypassed stochastic guardrails @cursor-db-crash.],
   )
 ]
@@ -53,14 +53,14 @@
 == Palate Cleanser
 
 #align(center)[
-  #image("./assets/cooper.jpg")
+  #image("../assets/cooper.jpg")
 ]
 
 == Agents Bypassing Sudo
 
 #align(center)[
   #figure(
-    image("./assets/codex-sudo-bypass.png"),
+    image("../assets/codex-sudo-bypass.png"),
     caption: [Output from Codex of the agent using Docker to bypass restrictions on sudo commands @codex-sudo-bypass.],
   )
 ]
@@ -72,7 +72,7 @@
   - "Ignore all previous instructions and ..."
 ][
   #figure(
-    image("./assets/prompt-injection.png"),
+    image("../assets/prompt-injection.png"),
     caption: [
       A diagram showing an example of prompt injection.
       @prompt-injection
@@ -101,8 +101,6 @@ It's an ID assigned to a collection of characters that has semantic meaning to a
 - Token to word exchange varies by tokenizer
 - Usually 1.5 tokens per word
 
-//CITE
-
 == WTF Is a Token?
 
 Example: Look at the usage of the letter "A" here.
@@ -129,7 +127,7 @@ Examples taken from IBM's explainer page @ibm-context-window.
 == Long Story Short
 
 #align(center)[
-  #image("./assets/claude-context-meme.jpg")
+  #image("../assets/claude-context-meme.jpg")
 ]
 
 = Part 3: Guardrails
@@ -256,7 +254,7 @@ Examples taken from IBM's explainer page @ibm-context-window.
 == Why Hooks?
 
 #align(center)[
-  #image("./assets/superman-darkseid-pulling-superman's-cape-1494736588.gif")
+  #image("../assets/superman-darkseid-pulling-superman's-cape-1494736588.gif")
 ]
 
 == Hook Example: Skill Router
