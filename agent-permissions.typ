@@ -44,10 +44,11 @@
 
 == Agents Ignoring Instructions
 #align(center)[
-  #image("./assets/cursor-ignore-1.png")
+  #figure(
+    image("./assets/cursor-ignore-1.png"),
+    caption: [Quote from Cursor explaining how it bypassed stochastic guardrails @cursor-db-crash.],
+  )
 ]
-
-//CITE
 
 == Palate Cleanser
 
@@ -58,10 +59,11 @@
 == Agents Bypassing Sudo
 
 #align(center)[
-  #image("./assets/codex-sudo-bypass.png")
+  #figure(
+    image("./assets/codex-sudo-bypass.png"),
+    caption: [Output from Codex of the agent using Docker to bypass restrictions on sudo commands @codex-sudo-bypass.],
+  )
 ]
-
-//CITE
 
 == Prompt Injection
 
@@ -82,7 +84,7 @@
 
 == WTF Is a Token?
 
-A *token* is the smallest unit of information LLMs process.
+A *token* is the smallest unit of information LLMs process @ibm-context-window.
 
 It's an ID assigned to a collection of characters that has semantic meaning to a model.
 
@@ -103,7 +105,7 @@ Example: Look at the usage of the letter "A" here.
 2. Jeff is #([*a*], [moral]).join()
 3. Jeff loves his #([c], [*a*], [t]).join()
 
-//CITE
+Examples taken from IBM's explainer page @ibm-context-window.
 
 == Context Windows
 
@@ -111,16 +113,12 @@ Example: Look at the usage of the letter "A" here.
 - Specifically, max number of tokens for which model can compute vector weights
 - *Note*: Compute requirements are $O(n^2)$ on the number of tokens
 
-// CITE
-
 == The "Attention Span"
 
 - Like people, LLMs can get overwhelmed and take shortcuts
 - More context -> worse information usage
 - Information in the middle usually gets lost
 - At around 50%, the model starts to get . . . forgetful
-
-//CITE
 
 == Long Story Short
 
@@ -226,11 +224,9 @@ Example: Look at the usage of the letter "A" here.
   - High-risk and/or out-of-scope actions set to "Deny"
 - Modify as you go
 
-// CITE
-
 == Considerations
 
-- Subversion
+- Malicious Compliance
   - If write access is blocked, agents use `sed` or bash redirections
 - Project-level settings
   - Can set access at the project or directory level
@@ -352,3 +348,21 @@ Running Bash commands with restricted network/file access at the OS level
   - Cloud instances
   - Local hypervisors (VirtualBox, VMWare, KVM)
   - MicroVM (Firecracker, Docker Sandboxes)
+
+= Wrapping Up
+
+== Wrapping Up
+
+Today, we talked about:
+
+- Why agents tend to "forget" critical instructions
+- The different kinds of guardrails
+- Setting up permissions
+- Setting up hooks
+- Sandboxing your agents
+
+#focus-slide([
+  FIN
+])
+
+#bibliography("agent-permissions.bib.yaml")
